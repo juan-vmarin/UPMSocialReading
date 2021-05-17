@@ -1,202 +1,319 @@
-
 /**
  * UPMSocialReadingSkeleton.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST)
  */
-    package es.upm.fi.sos;
-    /**
-     *  UPMSocialReadingSkeleton java skeleton for the axisService
-     */
-    public class UPMSocialReadingSkeleton{
-        
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param logout 
-             * @return  
-         */
-        
-                 public void logout
-                  (
-                  es.upm.fi.sos.Logout logout
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                
-        }
-     
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param addFriend 
-             * @return addFriendResponse 
-         */
-        
-                 public es.upm.fi.sos.AddFriendResponse addFriend
-                  (
-                  es.upm.fi.sos.AddFriend addFriend
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#addFriend");
-        }
-     
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param removeFriend 
-             * @return removeFriendResponse 
-         */
-        
-                 public es.upm.fi.sos.RemoveFriendResponse removeFriend
-                  (
-                  es.upm.fi.sos.RemoveFriend removeFriend
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#removeFriend");
-        }
-     
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param getMyFriendReadings 
-             * @return getMyFriendReadingsResponse 
-         */
-        
-                 public es.upm.fi.sos.GetMyFriendReadingsResponse getMyFriendReadings
-                  (
-                  es.upm.fi.sos.GetMyFriendReadings getMyFriendReadings
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#getMyFriendReadings");
-        }
-     
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param getMyFriendList 
-             * @return getMyFriendListResponse 
-         */
-        
-                 public es.upm.fi.sos.GetMyFriendListResponse getMyFriendList
-                  (
-                  es.upm.fi.sos.GetMyFriendList getMyFriendList
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#getMyFriendList");
-        }
-     
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param addUser 
-             * @return addUserResponse 
-         */
-        
-                 public es.upm.fi.sos.AddUserResponse addUser
-                  (
-                  es.upm.fi.sos.AddUser addUser
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#addUser");
-        }
-     
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param removeUser 
-             * @return removeUserResponse 
-         */
-        
-                 public es.upm.fi.sos.RemoveUserResponse removeUser
-                  (
-                  es.upm.fi.sos.RemoveUser removeUser
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#removeUser");
-        }
-     
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param getMyReadings 
-             * @return getMyReadingsResponse 
-         */
-        
-                 public es.upm.fi.sos.GetMyReadingsResponse getMyReadings
-                  (
-                  es.upm.fi.sos.GetMyReadings getMyReadings
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#getMyReadings");
-        }
-     
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param addReading 
-             * @return addReadingResponse 
-         */
-        
-                 public es.upm.fi.sos.AddReadingResponse addReading
-                  (
-                  es.upm.fi.sos.AddReading addReading
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#addReading");
-        }
-     
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param changePassword 
-             * @return changePasswordResponse 
-         */
-        
-                 public es.upm.fi.sos.ChangePasswordResponse changePassword
-                  (
-                  es.upm.fi.sos.ChangePassword changePassword
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#changePassword");
-        }
-     
-         
-        /**
-         * Auto generated method signature
-         * 
-                                     * @param login 
-             * @return loginResponse 
-         */
-        
-                 public es.upm.fi.sos.LoginResponse login
-                  (
-                  es.upm.fi.sos.Login login
-                  )
-            {
-                //TODO : fill this with the necessary business logic
-                throw new  java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#login");
-        }
-     
-    }
-    
+package es.upm.fi.sos;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import es.upm.fi.sos.UPMAuthenticationAuthorizationWSSkeletonStub.ChangePasswordResponseE;
+import es.upm.fi.sos.UPMAuthenticationAuthorizationWSSkeletonStub.*;
+import es.upm.fi.sos.xsd.*;
+
+/**
+ * UPMSocialReadingSkeleton java skeleton for the axisService
+ */
+public class UPMSocialReadingSkeleton {
+	private static UPMAuthenticationAuthorizationWSSkeletonStub stub = null;
+	private final static HashMap<String, String> users = new HashMap<>();
+	private final static HashMap<String, ArrayList<String>> friends = new HashMap<>();
+	private final static HashMap<String, ArrayList<Book>> readings = new HashMap<>();
+
+	private int sessions;
+	private User user;
+
+	public UPMSocialReadingSkeleton() throws Exception {
+		if (stub == null) {
+			stub = new UPMAuthenticationAuthorizationWSSkeletonStub();
+			stub._getServiceClient().engageModule("addressing");
+			stub._getServiceClient().getOptions().setManageSession(true);
+			users.put("admin", "admin");
+		}
+		this.sessions = 0;
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param logout
+	 * @return
+	 */
+
+	public void logout(Logout logout) {
+		if (user != null) {
+			return;
+		}
+
+		this.sessions--;
+		if (this.sessions == 0) {
+			this.user = null;
+		}
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param addFriend
+	 * @return addFriendResponse
+	 */
+
+	public AddFriendResponse addFriend(AddFriend addFriend) {
+		// TODO : fill this with the necessary business logic
+		throw new java.lang.UnsupportedOperationException("Please implement "
+				+ this.getClass().getName() + "#addFriend");
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param removeFriend
+	 * @return removeFriendResponse
+	 */
+
+	public RemoveFriendResponse removeFriend(RemoveFriend removeFriend) {
+		// TODO : fill this with the necessary business logic
+		throw new java.lang.UnsupportedOperationException("Please implement "
+				+ this.getClass().getName() + "#removeFriend");
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param getMyFriendReadings
+	 * @return getMyFriendReadingsResponse
+	 */
+
+	public GetMyFriendReadingsResponse getMyFriendReadings(
+			GetMyFriendReadings getMyFriendReadings) {
+		// TODO : fill this with the necessary business logic
+		throw new java.lang.UnsupportedOperationException("Please implement "
+				+ this.getClass().getName() + "#getMyFriendReadings");
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param getMyFriendList
+	 * @return getMyFriendListResponse
+	 */
+
+	public GetMyFriendListResponse getMyFriendList(
+			GetMyFriendList getMyFriendList) {
+		// TODO : fill this with the necessary business logic
+		throw new java.lang.UnsupportedOperationException("Please implement "
+				+ this.getClass().getName() + "#getMyFriendList");
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param addUser
+	 * @return addUserResponse
+	 * @throws RemoteException
+	 */
+
+	public AddUserResponse addUser(AddUser addUser) throws RemoteException {
+		es.upm.fi.sos.xsd.AddUserResponse addUserResponseXsd = new es.upm.fi.sos.xsd.AddUserResponse();
+		addUserResponseXsd.setResponse(false);
+		es.upm.fi.sos.AddUserResponse addUserResponse = new es.upm.fi.sos.AddUserResponse();
+		addUserResponse.set_return(addUserResponseXsd);
+
+		if (user == null) {
+			return addUserResponse;
+		}
+
+		if (!user.getName().equals("admin")) {
+			return addUserResponse;
+		}
+
+		UserBackEnd userBackEnd = new UserBackEnd();
+		userBackEnd.setName(addUser.getArgs0().getUsername());
+		UPMAuthenticationAuthorizationWSSkeletonStub.AddUser addUserBackEnd = new UPMAuthenticationAuthorizationWSSkeletonStub.AddUser();
+		addUserBackEnd.setUser(userBackEnd);
+		UPMAuthenticationAuthorizationWSSkeletonStub.AddUserResponse addUserResponseBackEnd = stub
+				.addUser(addUserBackEnd);
+		if (addUserResponseBackEnd.get_return().getResult()) {
+			addUserResponseXsd.setResponse(true);
+			addUserResponseXsd.setPwd(addUserResponseBackEnd.get_return()
+					.getPassword());
+		}
+
+		return addUserResponse;
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param removeUser
+	 * @return removeUserResponse
+	 * @throws RemoteException
+	 */
+
+	public RemoveUserResponse removeUser(RemoveUser removeUser)
+			throws RemoteException {
+		Response response = new Response();
+		response.setResponse(false);
+		RemoveUserResponse removeUserResponse = new RemoveUserResponse();
+		removeUserResponse.set_return(response);
+
+		// si no habia logeado anteriormente
+		if (this.user == null) {
+			return removeUserResponse;
+		}
+
+		// si no es admin ni coinciden el nombre de usuario que quiere borrar
+		if (!this.user.getName().equals("admin")
+				&& !this.user.getName().equals(
+						removeUser.getArgs0().getUsername())) {
+			return removeUserResponse;
+		}
+
+		UPMAuthenticationAuthorizationWSSkeletonStub.RemoveUser removeUserBackEnd = new UPMAuthenticationAuthorizationWSSkeletonStub.RemoveUser();
+		removeUserBackEnd.setName(removeUser.getArgs0().getUsername());
+		removeUserBackEnd.setPassword(users.get(removeUser.getArgs0()
+				.getUsername()));
+		RemoveUserE removeUserE = new RemoveUserE();
+		removeUserE.setRemoveUser(removeUserBackEnd);
+		RemoveUserResponseE removeUserResponseE = stub.removeUser(removeUserE);
+		if (removeUserResponseE.get_return().getResult()) {
+			response.setResponse(true);
+			// posiblemente el borrado en el hashmap de users
+		}
+		return removeUserResponse;
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param getMyReadings
+	 * @return getMyReadingsResponse
+	 */
+
+	public GetMyReadingsResponse getMyReadings(GetMyReadings getMyReadings) {
+		// TODO : fill this with the necessary business logic
+		throw new java.lang.UnsupportedOperationException("Please implement "
+				+ this.getClass().getName() + "#getMyReadings");
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param addReading
+	 * @return addReadingResponse
+	 */
+
+	public AddReadingResponse addReading(AddReading addReading) {
+		// TODO : fill this with the necessary business logic
+		throw new java.lang.UnsupportedOperationException("Please implement "
+				+ this.getClass().getName() + "#addReading");
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param changePassword
+	 * @return changePasswordResponse
+	 * @throws RemoteException
+	 */
+
+	public ChangePasswordResponse changePassword(ChangePassword changePassword)
+			throws RemoteException {
+		Response response = new Response();
+		response.setResponse(false);
+		ChangePasswordResponse changePasswordResponse = new ChangePasswordResponse();
+		changePasswordResponse.set_return(response);
+
+		// si no se ha logeado anteriormente
+		if (this.user == null) {
+			return changePasswordResponse;
+		}
+
+		// si admin se maneja internamente
+		if (this.user.getName().equals("admin")) {
+			if (this.user.getPwd()
+					.equals(changePassword.getArgs0().getOldpwd())) {
+				users.put("admin", changePassword.getArgs0().getNewpwd());
+				response.setResponse(true);
+			}
+			return changePasswordResponse;
+		}
+
+		// si no coincide el password antiguo que se logeo
+		if (!this.user.getPwd().equals(changePassword.getArgs0().getOldpwd())) {
+			return changePasswordResponse;
+		}
+
+		// llamar al servicio para cambiar el password
+		ChangePasswordBackEnd changePasswordBackEnd = new ChangePasswordBackEnd();
+		changePasswordBackEnd.setName(this.user.getName());
+		changePasswordBackEnd.setOldpwd(users.get(this.user.getName()));
+		changePasswordBackEnd.setNewpwd(changePassword.getArgs0().getNewpwd());
+		UPMAuthenticationAuthorizationWSSkeletonStub.ChangePassword changePassWord = new UPMAuthenticationAuthorizationWSSkeletonStub.ChangePassword();
+		changePassWord.setChangePassword(changePasswordBackEnd);
+		ChangePasswordResponseE changePasswordResponseE = stub
+				.changePassword(changePassWord);
+		if (changePasswordResponseE.get_return().getResult()) {
+			users.put(this.user.getName(), changePassword.getArgs0()
+					.getNewpwd());
+			response.setResponse(true);
+		}
+		return changePasswordResponse;
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param login
+	 * @return loginResponse
+	 * @throws RemoteException
+	 */
+
+	public LoginResponse login(Login login) throws RemoteException {
+		LoginResponse loginResponse = new LoginResponse();
+		Response response = new Response();
+		response.setResponse(false);
+		loginResponse.set_return(response);
+
+		// si ya habia logeado anteriormente
+		if (user != null) {
+			if (user.getName().equals(login.getArgs0().getName())) {
+				response.setResponse(true);
+				this.sessions++;
+				return loginResponse;
+			} else {
+				return loginResponse;
+			}
+		}
+
+		// si se quiere logear admin
+		if (login.getArgs0().getName().equals("admin")) {
+			if (login.getArgs0().getPwd().equals(users.get("admin"))) {
+				response.setResponse(true);
+				this.sessions++;
+				this.user = login.getArgs0();
+			}
+			return loginResponse;
+		}
+
+		// no habia logeado y no es admin
+		LoginBackEnd loginBackEnd = new LoginBackEnd();
+		loginBackEnd.setName(login.getArgs0().getName());
+		loginBackEnd.setPassword(login.getArgs0().getPwd());
+		UPMAuthenticationAuthorizationWSSkeletonStub.Login loginAuthorization = new UPMAuthenticationAuthorizationWSSkeletonStub.Login();
+		loginAuthorization.setLogin(loginBackEnd);
+		UPMAuthenticationAuthorizationWSSkeletonStub.LoginResponse loginResponseBackEnd = stub
+				.login(loginAuthorization);
+		if (loginResponseBackEnd.get_return().getResult()) {
+			response.setResponse(true);
+			users.put(login.getArgs0().getName(), login.getArgs0().getPwd());
+			this.sessions++;
+			this.user = login.getArgs0();
+		}
+		return loginResponse;
+	}
+
+}
