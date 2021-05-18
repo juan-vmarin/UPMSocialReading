@@ -107,12 +107,43 @@ public class UPMSocialReadingSkeleton {
 	 * 
 	 * @param removeFriend
 	 * @return removeFriendResponse
+	 * @throws RemoteException
 	 */
 
-	public RemoveFriendResponse removeFriend(RemoveFriend removeFriend) {
-		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException("Please implement "
-				+ this.getClass().getName() + "#removeFriend");
+	public RemoveFriendResponse removeFriend(RemoveFriend removeFriend)
+			throws RemoteException {
+		Response response = new Response();
+		response.setResponse(false);
+		RemoveFriendResponse removeFriendResponse = new RemoveFriendResponse();
+		removeFriendResponse.set_return(response);
+
+		// si no habia logeado anteriormente
+		if (this.user == null) {
+			return removeFriendResponse;
+		}
+
+		// comprobar la existencia del usuario como amigo en la red social
+		UPMAuthenticationAuthorizationWSSkeletonStub.Username username = new UPMAuthenticationAuthorizationWSSkeletonStub.Username();
+		username.setName(removeFriend.getArgs0().getUsername());
+		ExistUser existUser = new ExistUser();
+		existUser.setUsername(username);
+		ExistUserResponseE existResponse = stub.existUser(existUser);
+		if (!existResponse.get_return().getResult()) {
+			return removeFriendResponse;
+		}
+
+		// se comprueba si existe ese amigo
+		String userFriend = removeFriend.getArgs0().getUsername();
+		for (String name : friends.get(this.user.getName())) {
+			if (name.equals(userFriend)) {
+				friends.remove(userFriend);
+				response.setResponse(true);
+				return removeFriendResponse;
+			}
+		}
+
+		return removeFriendResponse;
+
 	}
 
 	/**
@@ -138,9 +169,14 @@ public class UPMSocialReadingSkeleton {
 
 	public GetMyFriendListResponse getMyFriendList(
 			GetMyFriendList getMyFriendList) {
-		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException("Please implement "
-				+ this.getClass().getName() + "#getMyFriendList");
+		GetMyFriendListResponse getMyFriendListResponse = new GetMyFriendListResponse();
+		
+		
+//		// si no habia logeado anteriormente
+//		if (this.user == null) {
+//			return getMyFriendListResponse;
+//		}
+		return null;
 	}
 
 	/**
