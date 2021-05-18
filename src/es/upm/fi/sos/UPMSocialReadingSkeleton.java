@@ -168,15 +168,24 @@ public class UPMSocialReadingSkeleton {
 	 */
 
 	public GetMyFriendListResponse getMyFriendList(
-			GetMyFriendList getMyFriendList) {
+			GetMyFriendList getMyFriendList) {	
+		FriendList friendList = new FriendList();
+		friendList.setResult(false);
 		GetMyFriendListResponse getMyFriendListResponse = new GetMyFriendListResponse();
+		getMyFriendListResponse.set_return(friendList);
+		
+		// si no habia logeado anteriormente
+		if (this.user == null) {
+			return getMyFriendListResponse;
+		}
 		
 		
-//		// si no habia logeado anteriormente
-//		if (this.user == null) {
-//			return getMyFriendListResponse;
-//		}
-		return null;
+		for (String friend: friends.get(this.user.getName())){
+			friendList.addFriends(friend);
+		}
+		
+		
+		return getMyFriendListResponse;
 	}
 
 	/**
@@ -265,9 +274,24 @@ public class UPMSocialReadingSkeleton {
 	 */
 
 	public GetMyReadingsResponse getMyReadings(GetMyReadings getMyReadings) {
-		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException("Please implement "
-				+ this.getClass().getName() + "#getMyReadings");
+		TitleList titleList = new TitleList();
+		titleList.setResult(false);
+		GetMyReadingsResponse getMyReadingsResponse = new GetMyReadingsResponse();
+		getMyReadingsResponse.set_return(titleList);
+		
+		// si no habia logeado anteriormente
+		if (this.user == null) {
+			return getMyReadingsResponse;
+		}
+		
+		for(Book book: readings.get(this.user.getName())){
+			if (book.isTitleSpecified()) {
+				titleList.addTitles(book.getTitle());
+			}
+		}
+		titleList.setResult(true);
+		return getMyReadingsResponse;
+		
 	}
 
 	/**
