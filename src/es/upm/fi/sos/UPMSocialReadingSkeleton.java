@@ -32,6 +32,9 @@ public class UPMSocialReadingSkeleton {
 			stub._getServiceClient().engageModule("addressing");
 			stub._getServiceClient().getOptions().setManageSession(true);
 			users.put("admin", "admin");
+			// crear una lista vacio de amigos y de sus lecturas solo para admin
+			friends.put("admin", new ArrayList<>());
+			readings.put("admin", new ArrayList<>());
 		}
 		this.sessions = 0;
 	}
@@ -59,12 +62,44 @@ public class UPMSocialReadingSkeleton {
 	 * 
 	 * @param addFriend
 	 * @return addFriendResponse
+	 * @throws RemoteException
 	 */
 
-	public AddFriendResponse addFriend(AddFriend addFriend) {
-		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException("Please implement "
-				+ this.getClass().getName() + "#addFriend");
+	public AddFriendResponse addFriend(AddFriend addFriend)
+			throws RemoteException {
+		Response response = new Response();
+		response.setResponse(false);
+		AddFriendResponse addFriendResponse = new AddFriendResponse();
+		addFriendResponse.set_return(response);
+
+		// si se ha logeado anteriormente
+		if (this.user == null) {
+			return addFriendResponse;
+		}
+
+		// comprobar la existencia del usuario como amigo en la red social
+		UPMAuthenticationAuthorizationWSSkeletonStub.Username username = new UPMAuthenticationAuthorizationWSSkeletonStub.Username();
+		username.setName(addFriend.getArgs0().getUsername());
+		ExistUser existUser = new ExistUser();
+		existUser.setUsername(username);
+		ExistUserResponseE existResponse = stub.existUser(existUser);
+		if (!existResponse.get_return().getResult()) {
+			return addFriendResponse;
+		}
+
+		// si ya fue aniadido como amigo
+		for (String friend : friends.get(this.user.getName())) {
+			if (friend.equals(addFriend.getArgs0().getUsername())) {
+				return addFriendResponse;
+			}
+		}
+
+		// aniadir como amigo
+		friends.get(this.user.getName())
+				.add(addFriend.getArgs0().getUsername());
+		response.setResponse(true);
+
+		return addFriendResponse;
 	}
 
 	/**
@@ -312,6 +347,14 @@ public class UPMSocialReadingSkeleton {
 			users.put(login.getArgs0().getName(), login.getArgs0().getPwd());
 			this.sessions++;
 			this.user = login.getArgs0();
+			// crear una lista vacio de amigos y de sus lecturas
+			if (!friends.containsKey(login.getArgs0().getName())) {
+				friends.put(login.getArgs0().getName(), new ArrayList<>());
+			}
+
+			if (!readings.containsKey(login.getArgs0().getName())) {
+				readings.put(login.getArgs0().getName(), new ArrayList<>());
+			}
 		}
 		return loginResponse;
 	}
