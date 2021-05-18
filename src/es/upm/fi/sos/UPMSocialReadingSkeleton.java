@@ -170,12 +170,11 @@ public class UPMSocialReadingSkeleton {
 	public GetMyFriendListResponse getMyFriendList(
 			GetMyFriendList getMyFriendList) {
 		GetMyFriendListResponse getMyFriendListResponse = new GetMyFriendListResponse();
-		
-		
-//		// si no habia logeado anteriormente
-//		if (this.user == null) {
-//			return getMyFriendListResponse;
-//		}
+
+		// // si no habia logeado anteriormente
+		// if (this.user == null) {
+		// return getMyFriendListResponse;
+		// }
 		return null;
 	}
 
@@ -278,9 +277,29 @@ public class UPMSocialReadingSkeleton {
 	 */
 
 	public AddReadingResponse addReading(AddReading addReading) {
-		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException("Please implement "
-				+ this.getClass().getName() + "#addReading");
+		Response response = new Response();
+		response.setResponse(false);
+		AddReadingResponse addReadingResponse = new AddReadingResponse();
+		addReadingResponse.set_return(response);
+
+		// si no habia logeado anteriormente
+		if (this.user == null) {
+			return addReadingResponse;
+		}
+
+		// comprobar si habia aniadido anteriormente
+		for (Book reading : readings.get(this.user.getName())) {
+			if (reading.getTitle().equals(addReading.getArgs0().getTitle())) {
+				reading.setAuthor(addReading.getArgs0().getAuthor());
+				reading.setCalification(addReading.getArgs0().getCalification());
+				response.setResponse(true);
+				return addReadingResponse;
+			}
+		}
+
+		readings.get(this.user.getName()).add(addReading.getArgs0());
+		response.setResponse(true);
+		return addReadingResponse;
 	}
 
 	/**
