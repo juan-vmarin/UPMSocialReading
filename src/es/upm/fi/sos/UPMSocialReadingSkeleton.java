@@ -151,13 +151,70 @@ public class UPMSocialReadingSkeleton {
 	 * 
 	 * @param getMyFriendReadings
 	 * @return getMyFriendReadingsResponse
+	 * @throws RemoteException
 	 */
 
 	public GetMyFriendReadingsResponse getMyFriendReadings(
-			GetMyFriendReadings getMyFriendReadings) {
-		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException("Please implement "
-				+ this.getClass().getName() + "#getMyFriendReadings");
+			GetMyFriendReadings getMyFriendReadings) throws RemoteException {
+		TitleList titleList = new TitleList();
+		titleList.setResult(false);
+		titleList.setTitles(new String[0]);
+		GetMyFriendReadingsResponse getMyFriendReadingsResponse = new GetMyFriendReadingsResponse();
+		getMyFriendReadingsResponse.set_return(titleList);
+
+		// si no habia logeado anteriormente
+		if (this.user == null) {
+			return getMyFriendReadingsResponse;
+		}
+
+		// comprobar la existencia del usuario como amigo en la red social
+		UPMAuthenticationAuthorizationWSSkeletonStub.Username username = new UPMAuthenticationAuthorizationWSSkeletonStub.Username();
+		username.setName(getMyFriendReadings.getArgs0().getUsername());
+		ExistUser existUser = new ExistUser();
+		existUser.setUsername(username);
+		ExistUserResponseE existResponse = stub.existUser(existUser);
+		if (!existResponse.get_return().getResult()) {
+			return getMyFriendReadingsResponse;
+		}
+
+		// comprobar si es amigo del usuario de las lecturas
+		if (!friends.containsKey(getMyFriendReadings.getArgs0().getUsername())) {
+			return getMyFriendReadingsResponse;
+		}
+
+		boolean isFriend = false;
+		for (String friend : friends.get(getMyFriendReadings.getArgs0()
+				.getUsername())) {
+			if (friend.equals(this.user.getName())) {
+				isFriend = true;
+				break;
+			}
+		}
+
+		if (!isFriend) {
+			return getMyFriendReadingsResponse;
+		}
+
+		// comprobar la existencia de las lecturas del usuario a consultar
+		if (!readings.containsKey(getMyFriendReadings.getArgs0().getUsername())) {
+			titleList.setResult(true);
+			return getMyFriendReadingsResponse;
+		}
+
+		// crear un array inversa de los titulos de libros
+		ArrayList<Book> friendReadings = readings.get(getMyFriendReadings
+				.getArgs0().getUsername());
+		String[] titles = new String[friendReadings.size()];
+
+		for (int i = 0; i < friendReadings.size(); i++) {
+			titles[i] = friendReadings.get(friendReadings.size() - 1 - i)
+					.getTitle();
+		}
+
+		titleList.setResult(true);
+		titleList.setTitles(titles);
+
+		return getMyFriendReadingsResponse;
 	}
 
 	/**
