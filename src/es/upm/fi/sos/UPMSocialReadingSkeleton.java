@@ -308,6 +308,11 @@ public class UPMSocialReadingSkeleton {
 			return removeUserResponse;
 		}
 
+		// si el usuario que quiere borrar es admin
+		if (removeUser.getArgs0().getUsername().equals("admin")) {
+			return removeUserResponse;
+		}
+
 		// si no es admin ni coinciden el nombre de usuario que quiere borrar
 		if (!this.user.getName().equals("admin")
 				&& !this.user.getName().equals(
