@@ -324,7 +324,9 @@ public class UPMSocialReadingSkeleton {
 		RemoveUserResponseE removeUserResponseE = stub.removeUser(removeUserE);
 		if (removeUserResponseE.get_return().getResult()) {
 			response.setResponse(true);
-			// posiblemente el borrado en el hashmap de users
+			users.remove(removeUser.getArgs0().getUsername());
+			friends.remove(removeUser.getArgs0().getUsername());
+			readings.remove(removeUser.getArgs0().getUsername());
 		}
 		return removeUserResponse;
 	}
