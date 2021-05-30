@@ -19,9 +19,9 @@ import es.upm.fi.sos.xsd.*;
  */
 public class UPMSocialReadingSkeleton {
 	private static UPMAuthenticationAuthorizationWSSkeletonStub stub = null;
-	private final static HashMap<String, String> users = new HashMap<>();
-	private final static HashMap<String, ArrayList<String>> friends = new HashMap<>();
-	private final static HashMap<String, ArrayList<Book>> readings = new HashMap<>();
+	private static HashMap<String, String> users;
+	private static HashMap<String, ArrayList<String>> friends;
+	private static HashMap<String, ArrayList<Book>> readings;
 
 	private int sessions;
 	private User user;
@@ -31,6 +31,11 @@ public class UPMSocialReadingSkeleton {
 			stub = new UPMAuthenticationAuthorizationWSSkeletonStub();
 			stub._getServiceClient().engageModule("addressing");
 			stub._getServiceClient().getOptions().setManageSession(true);
+
+			users = new HashMap<>();
+			readings = new HashMap<>();
+			friends = new HashMap<>();
+
 			users.put("admin", "admin");
 			// crear una lista vacio de amigos y de sus lecturas solo para admin
 			friends.put("admin", new ArrayList<>());
@@ -40,14 +45,14 @@ public class UPMSocialReadingSkeleton {
 	}
 
 	/**
-	 * Auto generated method signature
+	 * Auto generated method signatureS
 	 * 
 	 * @param logout
 	 * @return
 	 */
 
 	public void logout(Logout logout) {
-		if (user != null) {
+		if (user == null) {
 			return;
 		}
 
