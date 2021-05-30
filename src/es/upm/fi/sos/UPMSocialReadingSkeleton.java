@@ -81,6 +81,11 @@ public class UPMSocialReadingSkeleton {
 		if (this.user == null) {
 			return addFriendResponse;
 		}
+		
+		// si fue borrado el usuario por otra sesion
+		if (users.get(this.user.getName()) == null) {
+			return addFriendResponse;
+		}
 
 		// comprobar la existencia del usuario como amigo en la red social
 		UPMAuthenticationAuthorizationWSSkeletonStub.Username username = new UPMAuthenticationAuthorizationWSSkeletonStub.Username();
@@ -126,6 +131,11 @@ public class UPMSocialReadingSkeleton {
 		if (this.user == null) {
 			return removeFriendResponse;
 		}
+		
+		// si fue borrado el usuario por otra sesion
+		if (users.get(this.user.getName()) == null) {
+			return removeFriendResponse;
+		}
 
 		// comprobar la existencia del usuario como amigo en la red social
 		UPMAuthenticationAuthorizationWSSkeletonStub.Username username = new UPMAuthenticationAuthorizationWSSkeletonStub.Username();
@@ -139,9 +149,10 @@ public class UPMSocialReadingSkeleton {
 
 		// se comprueba si existe ese amigo
 		String userFriend = removeFriend.getArgs0().getUsername();
-		for (String name : friends.get(this.user.getName())) {
-			if (name.equals(userFriend)) {
-				friends.remove(userFriend);
+		ArrayList<String> myFriends = friends.get(this.user.getName());
+		for (int i = 0; i < myFriends.size(); i++) {
+			if (myFriends.get(i).equals(userFriend)) {
+				myFriends.remove(i);
 				response.setResponse(true);
 				return removeFriendResponse;
 			}
@@ -169,6 +180,11 @@ public class UPMSocialReadingSkeleton {
 
 		// si no habia logeado anteriormente
 		if (this.user == null) {
+			return getMyFriendReadingsResponse;
+		}
+		
+		// si fue borrado el usuario por otra sesion
+		if (users.get(this.user.getName()) == null) {
 			return getMyFriendReadingsResponse;
 		}
 
@@ -241,6 +257,11 @@ public class UPMSocialReadingSkeleton {
 		if (this.user == null) {
 			return getMyFriendListResponse;
 		}
+		
+		// si fue borrado el usuario por otra sesion
+		if (users.get(this.user.getName()) == null) {
+			return getMyFriendListResponse;
+		}
 
 		// crear un array de amigos
 		ArrayList<String> myFriends = friends.get(this.user.getName());
@@ -307,6 +328,11 @@ public class UPMSocialReadingSkeleton {
 		if (this.user == null) {
 			return removeUserResponse;
 		}
+		
+		// si fue borrado el usuario por otra sesion
+		if (users.get(this.user.getName()) == null) {
+			return removeUserResponse;
+		}
 
 		// si el usuario que quiere borrar es admin
 		if (removeUser.getArgs0().getUsername().equals("admin")) {
@@ -355,6 +381,11 @@ public class UPMSocialReadingSkeleton {
 			return getMyReadingsResponse;
 		}
 
+		// si fue borrado el usuario por otra sesion
+		if (users.get(this.user.getName()) == null) {
+			return getMyReadingsResponse;
+		}
+
 		// crear un array inversa de los titulos de libros
 		ArrayList<Book> myReadings = readings.get(this.user.getName());
 		String[] titles = new String[myReadings.size()];
@@ -383,6 +414,11 @@ public class UPMSocialReadingSkeleton {
 
 		// si no habia logeado anteriormente
 		if (this.user == null) {
+			return addReadingResponse;
+		}
+		
+		// si fue borrado el usuario por otra sesion
+		if (users.get(this.user.getName()) == null) {
 			return addReadingResponse;
 		}
 
@@ -418,6 +454,11 @@ public class UPMSocialReadingSkeleton {
 
 		// si no se ha logeado anteriormente
 		if (this.user == null) {
+			return changePasswordResponse;
+		}
+		
+		// si fue borrado el usuario por otra sesion
+		if (users.get(this.user.getName()) == null) {
 			return changePasswordResponse;
 		}
 
@@ -469,6 +510,11 @@ public class UPMSocialReadingSkeleton {
 
 		// si ya habia logeado anteriormente
 		if (user != null) {
+			// si fue borrado el usuario por otra sesion
+			if (users.get(this.user.getName()) == null) {
+				return loginResponse;
+			}
+			
 			if (user.getName().equals(login.getArgs0().getName())) {
 				response.setResponse(true);
 				this.sessions++;
